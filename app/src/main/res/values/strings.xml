@@ -3,4 +3,8 @@
     <string name="action_settings">Settings</string>
     <string name="share_link">Share The Link</string>
     <string name="copy_the_link">Copy The Link</string>
+    <!-- bottom bar string -->
+    <string name="tin">Tin</string>
+    <string name="save">Save</string>
+    <string name="profile">Profile</string>
 </resources>
