@@ -54,6 +54,16 @@ public class MainActivity extends TinBasicActivity {
                 basicFragment.getFragmentTag()).addToBackStack(null).commit();
     }
 
+    // To make the back button works as normal
+    @Override
+    public void onBackPressed() {
+        FragmentManager fragmentManager = getCurrentChildFragmentManager();
+        if (fragmentManager.getBackStackEntryCount() > 0) {
+            fragmentManager.popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
 
     @Override
     public void showSnackBar(String message) {
