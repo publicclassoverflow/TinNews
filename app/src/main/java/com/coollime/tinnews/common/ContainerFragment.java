@@ -14,6 +14,13 @@ import com.coollime.tinnews.R;
  * A simple {@link Fragment} subclass.
  */
 public class ContainerFragment extends TinBasicFragment {
+    // Define containerFragment index and tag
+    public static final int HOME_PAGE = 0;
+    public static final String HOME_PAGE_TAG = "home_page";
+    public static final int SAVE_PAGE = 1;
+    public static final String SAVE_PAGE_TAG = "save_page";
+    public static final int PROFILE_PAGE = 2;
+    public static final String PROFILE_PAGE_TAG = "profile_page";
     private int pageIndex;
 
     public static ContainerFragment newInstance(int pageIndex) {
@@ -28,6 +35,20 @@ public class ContainerFragment extends TinBasicFragment {
         TextView textView = view.findViewById(R.id.text);
         textView.setText("This is containFragment" + pageIndex);
         return view;
+    }
+
+    public static int getPositionById(int id) {
+        switch (id) {
+            case R.id.action_tin:
+                return HOME_PAGE;
+            case R.id.action_save:
+                return SAVE_PAGE;
+            case R.id.action_profile:
+                return PROFILE_PAGE;
+            default:
+                throw new IndexOutOfBoundsException();
+        }
+
     }
 }
 
