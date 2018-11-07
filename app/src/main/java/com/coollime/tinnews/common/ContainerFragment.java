@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.coollime.tinnews.R;
 import com.coollime.tinnews.save.SavedNewsFragment;
+import com.coollime.tinnews.tin.TinGalleryFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,7 +36,7 @@ public class ContainerFragment extends TinBasicFragment {
     private static Fragment createInitFragmentByIndex(int pageIndex) {
         switch (pageIndex) {
             case HOME_PAGE:
-                return null;
+                return TinGalleryFragment.newInstance();
             case SAVE_PAGE:
                 return SavedNewsFragment.newInstance();
             case PROFILE_PAGE:
