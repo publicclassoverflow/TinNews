@@ -1,15 +1,16 @@
 package com.coollime.tinnews.retrofit.response;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import com.google.gson.annotations.SerializedName;
 
+@Entity
 public class News {
-    // Fields created based on API documentation
-    // Check the API for reference
-    // https://newsapi.org/docs/get-started
     public String author;
     @NonNull
+    @PrimaryKey
     public String title;
     public String description;
     public String url;
