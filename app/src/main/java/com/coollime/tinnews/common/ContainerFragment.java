@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.coollime.tinnews.R;
+import com.coollime.tinnews.save.SavedNewsFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,19 +23,41 @@ public class ContainerFragment extends TinBasicFragment {
     public static final int PROFILE_PAGE = 2;
     public static final String PROFILE_PAGE_TAG = "profile_page";
     private int pageIndex;
+    private Fragment initFragment;
 
     public static ContainerFragment newInstance(int pageIndex) {
         ContainerFragment containerFragment = new ContainerFragment();
         containerFragment.pageIndex = pageIndex;
+        containerFragment.initFragment = createInitFragmentByIndex(pageIndex);
         return containerFragment;
+    }
+
+    private static Fragment createInitFragmentByIndex(int pageIndex) {
+        switch (pageIndex) {
+            case HOME_PAGE:
+                return null;
+            case SAVE_PAGE:
+                return SavedNewsFragment.newInstance();
+            case PROFILE_PAGE:
+                return null;
+            default:
+                throw new IndexOutOfBoundsException();
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater, container, savedInstanceState);
-        TextView textView = view.findViewById(R.id.text);
-        textView.setText("This is containFragment" + pageIndex);
-        return view;
+        return inflater.inflate(R.layout.child_fragment_container, container, false);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        // Attach childFragment to the ContainerFragment when activity gets created
+        super.onActivityCreated(savedInstanceState);
+        if (initFragment != null && !initFragment.isAdded()) {
+            getChildFragmentManager().beginTransaction().replace(R.id.child_fragment_container, initFragment, getCurrentTag(pageIndex))
+                    .commit();
+        }
     }
 
     public static int getPositionById(int id) {
@@ -49,6 +72,20 @@ public class ContainerFragment extends TinBasicFragment {
                 throw new IndexOutOfBoundsException();
         }
 
+    }
+
+    // Add fragment tags to the containerFragment
+    public static String getCurrentTag(int position) {
+        switch (position) {
+            case HOME_PAGE:
+                return HOME_PAGE_TAG;
+            case SAVE_PAGE:
+                return SAVE_PAGE_TAG;
+            case PROFILE_PAGE:
+                return PROFILE_PAGE_TAG;
+            default:
+                return null;
+        }
     }
 }
 
