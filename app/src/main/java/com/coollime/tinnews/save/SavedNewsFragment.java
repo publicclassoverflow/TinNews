@@ -11,10 +11,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.coollime.tinnews.R;
+import com.coollime.tinnews.common.ViewModelAdapter;
 import com.coollime.tinnews.mvp.MvpFragment;
 import com.coollime.tinnews.retrofit.response.News;
 import com.coollime.tinnews.save.detail.SavedNewsDetailedFragment;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -22,7 +24,7 @@ import java.util.List;
  */
 public class SavedNewsFragment extends MvpFragment<SavedNewsContract.Presenter> implements SavedNewsContract.View {
 
-    private SavedNewsAdapter savedNewsAdapter;
+    private ViewModelAdapter savedNewsAdapter;
     private TextView emptyState;
 
     public static SavedNewsFragment newInstance() {
@@ -40,7 +42,7 @@ public class SavedNewsFragment extends MvpFragment<SavedNewsContract.Presenter> 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         emptyState = view.findViewById(R.id.empty_state);
-        savedNewsAdapter = new SavedNewsAdapter(tinFragmentManager);
+        savedNewsAdapter = new ViewModelAdapter();
         recyclerView.setAdapter(savedNewsAdapter);
         return view;
 
@@ -59,7 +61,11 @@ public class SavedNewsFragment extends MvpFragment<SavedNewsContract.Presenter> 
             emptyState.setVisibility(View.GONE);
         }
         if (newsList != null) {
-            savedNewsAdapter.setNewsList(newsList);
+            List<SavedNewsViewModel> models = new LinkedList<>();
+            for (News news : newsList) {
+                models.add(new SavedNewsViewModel(news, tinFragmentManager));
+            }
+            savedNewsAdapter.addViewModels(models);
         }
     }
 }
