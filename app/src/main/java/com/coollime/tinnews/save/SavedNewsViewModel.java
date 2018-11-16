@@ -50,7 +50,6 @@ public class SavedNewsViewModel extends BaseViewModel<SavedNewsViewModel.SavedNe
     }
 
     public static class SavedNewsViewHolder extends RecyclerView.ViewHolder {
-
         TextView author;
         TextView description;
         ImageView icon;
@@ -62,5 +61,4 @@ public class SavedNewsViewModel extends BaseViewModel<SavedNewsViewModel.SavedNe
             icon = itemView.findViewById(R.id.image);
         }
     }
-
 }

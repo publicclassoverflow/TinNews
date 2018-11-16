@@ -33,7 +33,7 @@
             android:text="@string/author_unknown"
             android:id="@+id/author"
             android:gravity="left"
-            android:fontFamily="@font/notosans_regular"
+            android:fontFamily="@font/product_sans_regular"
             app:layout_constraintRight_toLeftOf="@id/image"
             app:layout_constraintLeft_toRightOf="@+id/author_label"
             app:layout_constraintTop_toTopOf="parent" />
