@@ -5,7 +5,6 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.view.menu.MenuPopupHelper;
@@ -31,13 +30,7 @@ public class WebViewActivity extends TinBasicActivity implements PopupMenu.OnMen
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_web_view);
-        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        findViewById(R.id.back).setOnClickListener(v -> onBackPressed());
         progressBar = findViewById(R.id.progress_bar);
         final WebView webView = findViewById(R.id.web_view);
         webView.getSettings().setJavaScriptEnabled(true);
@@ -51,28 +44,20 @@ public class WebViewActivity extends TinBasicActivity implements PopupMenu.OnMen
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                // TODO Auto-generated method stub
                 super.onPageFinished(view, url);
                 progressBar.setVisibility(View.GONE);
             }
         });
-//        Bundle bundle = getIntent().getExtras();
-//        if (bundle != null) {
-//            Bundle innerBundle = bundle.getBundle(BUNDLE);
-//            if (innerBundle != null) {
-//                url = innerBundle.getString(URL);
-//                webView.loadUrl(url);
-//            }
-//        }
-        url = "https://www.google.com";
-        webView.loadUrl(url);
-
-        findViewById(R.id.more).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            showMenu(v);
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            Bundle innerBundle = bundle.getBundle(BUNDLE);
+            if (innerBundle != null) {
+                url = innerBundle.getString(URL);
+                webView.loadUrl(url);
             }
-        });
+        }
+
+        findViewById(R.id.more).setOnClickListener(this::showMenu);
     }
 
     @Override
