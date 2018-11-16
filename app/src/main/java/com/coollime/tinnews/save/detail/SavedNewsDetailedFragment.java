@@ -9,16 +9,17 @@ import android.view.ViewGroup;
 
 import com.coollime.tinnews.R;
 import com.coollime.tinnews.common.TinBasicFragment;
+import com.coollime.tinnews.retrofit.response.News;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class SavedNewsDetailedFragment extends TinBasicFragment {
+    private static final String NEWS = "news";
 
-    public static SavedNewsDetailedFragment newInstance() {
-
+    public static SavedNewsDetailedFragment newInstance(News news) {
         Bundle args = new Bundle();
-
+        args.putSerializable(NEWS, news);
         SavedNewsDetailedFragment fragment = new SavedNewsDetailedFragment();
         fragment.setArguments(args);
         return fragment;
