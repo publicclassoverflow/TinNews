@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.coollime.tinnews.R;
+import com.coollime.tinnews.profile.TinProfileFragment;
 import com.coollime.tinnews.save.SavedNewsFragment;
 import com.coollime.tinnews.tin.TinGalleryFragment;
 
@@ -39,7 +40,7 @@ public class ContainerFragment extends TinBasicFragment {
             case SAVE_PAGE:
                 return SavedNewsFragment.newInstance();
             case PROFILE_PAGE:
-                return null;
+                return TinProfileFragment.newInstance();
             default:
                 throw new IndexOutOfBoundsException();
         }
