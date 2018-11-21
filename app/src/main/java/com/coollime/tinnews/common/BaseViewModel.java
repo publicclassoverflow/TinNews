@@ -13,7 +13,6 @@ public abstract class BaseViewModel<V extends RecyclerView.ViewHolder> {
         this.itemResourceId = itemResourceId;
     }
 
-
     public V createViewHolder(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext()).inflate(itemResourceId, parent, false);
         return createItemViewHolder(view);

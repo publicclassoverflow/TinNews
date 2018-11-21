@@ -1,5 +1,7 @@
 package com.coollime.tinnews.tin;
 
+import android.annotation.SuppressLint;
+
 import com.coollime.tinnews.TinApplication;
 import com.coollime.tinnews.database.AppDatabase;
 import com.coollime.tinnews.retrofit.NewsRequestApi;
@@ -8,7 +10,6 @@ import com.coollime.tinnews.retrofit.response.News;
 
 import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class TinModel implements TinContract.Model {
@@ -33,6 +34,7 @@ public class TinModel implements TinContract.Model {
         this.presenter = presenter;
     }
 
+    @SuppressLint("CheckResult")
     @Override
     public void fetchData() {
         // Make the request to fetch data in the Model
@@ -40,18 +42,17 @@ public class TinModel implements TinContract.Model {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .filter(baseResponse -> baseResponse != null && baseResponse.articles != null)
-                .subscribe(baseResponse -> {
-                    presenter.showNewsCard(baseResponse.articles);
-                }, error -> {
+                .subscribe(baseResponse -> presenter.showNewsCard(baseResponse.articles), error -> {
                 });
     }
 
+    @SuppressLint("CheckResult")
     @Override
     public void saveFavoriteNews(News news) {
-        Disposable disposable = Completable.fromAction(() -> db.newsDao().insertNews(news))
-                .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(() -> {
-
-                }, error -> {
+        Completable.fromAction(() -> db.newsDao().insertNews(news))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(() -> { }, error -> {
                 });
     }
 }

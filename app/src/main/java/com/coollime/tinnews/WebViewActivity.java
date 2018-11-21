@@ -56,7 +56,6 @@ public class WebViewActivity extends TinBasicActivity implements PopupMenu.OnMen
                 webView.loadUrl(url);
             }
         }
-
         findViewById(R.id.more).setOnClickListener(this::showMenu);
     }
 
@@ -90,7 +89,9 @@ public class WebViewActivity extends TinBasicActivity implements PopupMenu.OnMen
                 ClipboardManager clipboard = (ClipboardManager)
                         getSystemService(Context.CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newPlainText("simple text", url);
-                clipboard.setPrimaryClip(clip);
+                if (clipboard != null) {
+                    clipboard.setPrimaryClip(clip);
+                }
                 Toast.makeText(this, "Link Copied", Toast.LENGTH_SHORT).show();
             default:
                 break;
@@ -100,6 +101,5 @@ public class WebViewActivity extends TinBasicActivity implements PopupMenu.OnMen
 
     @Override
     public void doFragmentTransaction(TinBasicFragment basicFragment) {
-
     }
 }

@@ -1,13 +1,10 @@
 package com.coollime.tinnews;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.view.MenuItem;
-
 
 import com.coollime.tinnews.common.ContainerFragment;
 import com.coollime.tinnews.common.TinBasicActivity;
@@ -25,14 +22,10 @@ public class MainActivity extends TinBasicActivity {
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(TinFragmentPagerAdapter.FRAGMENT_NUMBER);
         bottomBar = findViewById(R.id.bottom_navigation);
-        bottomBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                viewPager.setCurrentItem(ContainerFragment.getPositionById(item.getItemId()));
-                return true;
-            }
+        bottomBar.setOnNavigationItemSelectedListener(item -> {
+            viewPager.setCurrentItem(ContainerFragment.getPositionById(item.getItemId()));
+            return true;
         });
-
     }
 
     // Get FragmentManager of corresponding tabs
@@ -66,8 +59,5 @@ public class MainActivity extends TinBasicActivity {
     }
 
     @Override
-    public void showSnackBar(String message) {
-
-    }
-
+    public void showSnackBar(String message) {}
 }
