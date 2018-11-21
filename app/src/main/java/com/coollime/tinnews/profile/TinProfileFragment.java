@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.coollime.tinnews.R;
 import com.coollime.tinnews.common.ViewModelAdapter;
 import com.coollime.tinnews.mvp.MvpFragment;
+import com.coollime.tinnews.save.detail.TitleViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,7 +48,9 @@ public class TinProfileFragment extends MvpFragment<ProfileContract.Presenter> i
 
     @Override
     public void setView() {
-
+        viewModelAdapter.addViewModel(
+                new TitleViewModel(getString(R.string.setting), R.layout.setting_title_layout)
+        );
     }
 
     @Override

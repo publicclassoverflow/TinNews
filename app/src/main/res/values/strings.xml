@@ -12,4 +12,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="author_unknown">Unknown Author</string>
     <string name="read_more">ReadMore</string>
+
+    <!-- Profile/Settings -->
+    <string name="clear_cache">Clear Cache</string>
+    <string name="setting">Setting</string>
+
 </resources>

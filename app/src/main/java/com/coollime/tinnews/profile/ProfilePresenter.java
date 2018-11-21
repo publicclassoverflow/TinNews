@@ -40,6 +40,7 @@ public class ProfilePresenter implements ProfileContract.Presenter {
     public void onViewAttached(ProfileContract.View view) {
         // Keep the view
         this.view = view;
+        this.view.setView();
     }
 
     @Override

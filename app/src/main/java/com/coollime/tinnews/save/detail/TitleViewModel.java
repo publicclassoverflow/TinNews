@@ -7,12 +7,18 @@ import android.widget.TextView;
 
 import com.coollime.tinnews.R;
 import com.coollime.tinnews.common.BaseViewModel;
+import com.mindorks.placeholderview.annotations.Layout;
 
 public class TitleViewModel extends BaseViewModel<TitleViewModel.TitleViewModelHolder> {
     private final String title;
 
     public TitleViewModel(String title) {
         super(R.layout.title_layout);
+        this.title = title;
+    }
+
+    public TitleViewModel(String title, @LayoutRes int layout) {
+        super(layout);
         this.title = title;
     }
 
