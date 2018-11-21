@@ -49,12 +49,44 @@ public class TinProfileFragment extends MvpFragment<ProfileContract.Presenter> i
 
     @Override
     public void setView() {
+        if (!viewModelAdapter.isEmpty()) {
+            return;
+        }
+        // Settings title
         viewModelAdapter.addViewModel(
                 new TitleViewModel(getString(R.string.setting), R.layout.setting_title_layout)
         );
+        // Clear saved news
         viewModelAdapter.addViewModel(
                 new RowTextViewModel(
                         getString(R.string.clear_cache), presenter.getCacheClearListener()
+                )
+        );
+        // Change country
+        viewModelAdapter.addViewModel(
+                new TitleViewModel(
+                        getString(R.string.change_source), R.layout.setting_title_layout
+                )
+        );
+        // Set US edition
+        viewModelAdapter.addViewModel(
+                new RowTextViewModel(
+                        getString(R.string.us),
+                        presenter.getOnCountryChangeListener(getString(R.string.us))
+                )
+        );
+        // Set Chinese edition
+        viewModelAdapter.addViewModel(
+                new RowTextViewModel(
+                        getString(R.string.cn),
+                        presenter.getOnCountryChangeListener(getString(R.string.cn))
+                )
+        );
+        // Set German edition
+        viewModelAdapter.addViewModel(
+                new RowTextViewModel(
+                        getString(R.string.de),
+                        presenter.getOnCountryChangeListener(getString(R.string.de))
                 )
         );
     }

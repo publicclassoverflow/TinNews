@@ -43,7 +43,7 @@ public class TinNewsCard {
     }
 
     @Resolve
-    private void onResolved(){
+    private void onResolved() {
         if (Util.isStringEmpty(news.image)) {
             image.setImageResource(R.drawable.no_image_available);
         } else {
@@ -54,30 +54,30 @@ public class TinNewsCard {
     }
 
     @SwipeOut
-    private void onSwipedOut(){
+    private void onSwipedOut() {
         Log.d("EVENT", "onSwipedOut");
         swipeView.addView(this);
     }
 
     @SwipeCancelState
-    private void onSwipeCancelState(){
+    private void onSwipeCancelState() {
         Log.d("EVENT", "onSwipeCancelState");
     }
 
     @SwipeIn
-    private void onSwipeIn(){
+    private void onSwipeIn() {
         Log.d("EVENT", "onSwipedIn");
         onSwipeListener.onLike(news);
 
     }
 
     @SwipeInState
-    private void onSwipeInState(){
+    private void onSwipeInState() {
         Log.d("EVENT", "onSwipeInState");
     }
 
     @SwipeOutState
-    private void onSwipeOutState(){
+    private void onSwipeOutState() {
         Log.d("EVENT", "onSwipeOutState");
     }
 
