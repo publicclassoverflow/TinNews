@@ -2,6 +2,7 @@
 * A Tinder-like swipe view news app based on MVP architectural pattern.
 Swipe gesture supports are based on [Mindorks's PlaceHolderView](https://github.com/janishar/PlaceHolderView).
 * The news source is pulled from a RESTful endpoint at [News API](https://newsapi.org/) by integrating [Retrofit](https://square.github.io/retrofit/) and [RxJava](https://github.com/ReactiveX/RxJava).
+* APK available for download [here](https://www.dropbox.com/s/50j8ey8qitilzkq/TinNews_v1.0.apk?dl=0)
 # Features Preview
 ## Main news page
 ### News card
