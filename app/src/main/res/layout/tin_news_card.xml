@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/four_dp"
                 android:singleLine="true"
-                android:fontFamily="@font/product_sans_regular"
+                android:fontFamily="@font/ubuntu_regular"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 

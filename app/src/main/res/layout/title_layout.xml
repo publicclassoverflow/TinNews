@@ -10,6 +10,6 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:fontFamily="@font/product_sans_regular"
+        android:fontFamily="@font/ubuntu_medium"
         android:id="@+id/title" />
 </LinearLayout>
