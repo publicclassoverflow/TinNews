@@ -17,10 +17,13 @@
     <!-- Profile/Settings -->
     <string name="clear_cache">Clear Cache</string>
     <string name="setting">Setting</string>
+    <string name="cache_cleared">All news deleted</string>
 
     <!-- News Source -->
     <string name="change_source">Change Source</string>
     <string name="cn">cn</string>
     <string name="us">us</string>
     <string name="de">de</string>
+    <string name="bottom_header">Are you sure you want to delete this news?</string>
+    <string name="confirm_deletion">Confirm and delete the news</string>
 </resources>

@@ -2,7 +2,6 @@ package com.coollime.tinnews.save;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,7 +13,6 @@ import com.coollime.tinnews.R;
 import com.coollime.tinnews.common.ViewModelAdapter;
 import com.coollime.tinnews.mvp.MvpFragment;
 import com.coollime.tinnews.retrofit.response.News;
-import com.coollime.tinnews.save.detail.SavedNewsDetailedFragment;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -45,7 +43,6 @@ public class SavedNewsFragment extends MvpFragment<SavedNewsContract.Presenter> 
         savedNewsAdapter = new ViewModelAdapter();
         recyclerView.setAdapter(savedNewsAdapter);
         return view;
-
     }
 
     @Override
@@ -62,7 +59,8 @@ public class SavedNewsFragment extends MvpFragment<SavedNewsContract.Presenter> 
         }
         List<SavedNewsViewModel> models = new LinkedList<>();
         for (News news : newsList) {
-            models.add(new SavedNewsViewModel(news, tinFragmentManager));
+            models.add(new SavedNewsViewModel(R.layout.saved_news_item, news, tinFragmentManager,
+                    presenter.getOnDeleteListener()));
         }
         savedNewsAdapter.addViewModels(models);
     }

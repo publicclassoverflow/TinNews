@@ -65,5 +65,4 @@ public class TinPresenter implements TinContract.Presenter {
             this.model.fetchData(countryEvent.country);
         }
     }
-
 }

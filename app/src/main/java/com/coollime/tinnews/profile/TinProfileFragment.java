@@ -94,5 +94,6 @@ public class TinProfileFragment extends MvpFragment<ProfileContract.Presenter> i
     @Override
     public void onCacheCleared() {
         Toast.makeText(getContext(), "Saved news has been deleted", Toast.LENGTH_SHORT).show();
+        tinFragmentManager.showSnackBar(getString(R.string.cache_cleared));
     }
 }
