@@ -5,5 +5,5 @@
         android:title="@string/share_link" />
     <item android:id="@+id/menu_copy"
         android:icon="@drawable/ic_content_copy_black_24dp"
-        android:title="@string/copy_the_link" />
+        android:title="@string/copy_link" />
 </menu>
