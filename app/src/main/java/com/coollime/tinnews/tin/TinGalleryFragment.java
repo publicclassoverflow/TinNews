@@ -12,6 +12,7 @@ import com.coollime.tinnews.retrofit.response.News;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,16 +20,12 @@ import java.util.List;
  */
 public class TinGalleryFragment extends MvpFragment<TinContract.Presenter> implements TinNewsCard.OnSwipeListener, TinContract.View {
     private SwipePlaceHolderView mSwipeView;
+    private List<News> cacheNews = new ArrayList<>();
+    private static final int MIN_NEWS = 4;
 
     public static TinGalleryFragment newInstance() {
-
-        Bundle args = new Bundle();
-
-        TinGalleryFragment fragment = new TinGalleryFragment();
-        fragment.setArguments(args);
-        return fragment;
+        return new TinGalleryFragment();
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,23 +51,34 @@ public class TinGalleryFragment extends MvpFragment<TinContract.Presenter> imple
     }
 
     @Override
-    public void showNewsCard(List<News> newsList) {
-        // Remove previous news cards after switching to another news source
-        mSwipeView.removeAllViews();
-        // Getting the news cards
-        for (News news : newsList) {
-            TinNewsCard tinNewsCard = new TinNewsCard(news, mSwipeView, this);
-            mSwipeView.addView(tinNewsCard);
-        }
-    }
-
-    @Override
     public void onLike(News news) {
+        cacheNews.remove(news); // Prevent liked news from being shown again
         presenter.saveFavoriteNews(news);
+        // Fetch more news if there are too few of them
+        if (cacheNews.size() < MIN_NEWS) {
+            presenter.fetchData(false);
+        }
     }
 
     @Override
     public TinContract.Presenter getPresenter() {
         return new TinPresenter();
+    }
+
+    @Override
+    public void onNewsLoaded(List<News> newsList, boolean isClear) {
+        if (isClear) {
+            cacheNews.clear();
+            mSwipeView.removeAllViews();
+        }
+        cacheNews.addAll(newsList);
+        for (News news : newsList) {
+            mSwipeView.addView(new TinNewsCard(news, mSwipeView, this));
+        }
+    }
+
+    @Override
+    public void message(String string) {
+        tinFragmentManager.showSnackBar(string);
     }
 }

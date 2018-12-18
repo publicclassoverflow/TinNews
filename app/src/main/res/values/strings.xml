@@ -4,8 +4,8 @@
     <string name="share_link">Share</string>
     <string name="copy_link">Copy Link</string>
     <!-- bottom bar string -->
-    <string name="tin">Tin</string>
-    <string name="save">Save</string>
+    <string name="news">News</string>
+    <string name="saved_news">Saved News</string>
     <string name="profile">Profile</string>
     <string name="placeholder"> </string>
 
@@ -20,10 +20,21 @@
     <string name="cache_cleared">All news deleted</string>
 
     <!-- News Source -->
-    <string name="change_source">Change Source</string>
+    <string name="change_source">Change News Source</string>
     <string name="cn">cn</string>
     <string name="us">us</string>
+    <string name="fr">fr</string>
+    <string name="mx">mx</string>
     <string name="de">de</string>
+    <string name="gb">gb</string>
+    <string name="au">au</string>
+    <string name="jp">jp</string>
+    <string name="kr">kr</string>
+    <string name="hk">hk</string>
+    <string name="tw">tw</string>
+    <string name="in">in</string>
+
+    <!-- Bottom dialog -->
     <string name="bottom_header">Are you sure you want to delete this news?</string>
     <string name="confirm_deletion">Confirm and delete the news</string>
 </resources>
