@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.coollime.tinnews.R;
 import com.coollime.tinnews.common.ViewModelAdapter;
 import com.coollime.tinnews.mvp.MvpFragment;
+import com.coollime.tinnews.profile.country.CountrySettingFragment;
 import com.coollime.tinnews.save.detail.TitleViewModel;
 
 /**
@@ -56,44 +57,21 @@ public class TinProfileFragment extends MvpFragment<ProfileContract.Presenter> i
         viewModelAdapter.addViewModel(
                 new TitleViewModel(getString(R.string.setting), R.layout.setting_title_layout)
         );
+        // Change country
+        viewModelAdapter.addViewModel(new RowTextViewModel(getString(R.string.change_source), v -> {
+            tinFragmentManager.doFragmentTransaction(CountrySettingFragment.newInstance());
+        }));
         // Clear saved news
         viewModelAdapter.addViewModel(
                 new RowTextViewModel(
                         getString(R.string.clear_cache), presenter.getCacheClearListener()
                 )
         );
-        // Change country
-        viewModelAdapter.addViewModel(
-                new TitleViewModel(
-                        getString(R.string.change_source), R.layout.setting_title_layout
-                )
-        );
-        // Set US edition
-        viewModelAdapter.addViewModel(
-                new RowTextViewModel(
-                        getString(R.string.us),
-                        presenter.getOnCountryChangeListener(getString(R.string.us))
-                )
-        );
-        // Set Chinese edition
-        viewModelAdapter.addViewModel(
-                new RowTextViewModel(
-                        getString(R.string.cn),
-                        presenter.getOnCountryChangeListener(getString(R.string.cn))
-                )
-        );
-        // Set German edition
-        viewModelAdapter.addViewModel(
-                new RowTextViewModel(
-                        getString(R.string.de),
-                        presenter.getOnCountryChangeListener(getString(R.string.de))
-                )
-        );
     }
 
     @Override
     public void onCacheCleared() {
-        Toast.makeText(getContext(), "Saved news has been deleted", Toast.LENGTH_SHORT).show();
         tinFragmentManager.showSnackBar(getString(R.string.cache_cleared));
+        Toast.makeText(getContext(), "Saved news has been deleted", Toast.LENGTH_SHORT).show();
     }
 }
