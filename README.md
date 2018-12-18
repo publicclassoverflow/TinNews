@@ -7,7 +7,7 @@ Swipe gesture supports are based on [Mindorks's PlaceHolderView](https://github.
 ## Main news page
 ### News card
 ![preview-tin](https://github.com/publicclassoverflow/TinNews/blob/tweaks/screenshots/preview-tin.png)
-![preview-tin](https://github.com/publicclassoverflow/TinNews/blob/master/screenshots/preview-news.png
+![preview-tin](https://github.com/publicclassoverflow/TinNews/blob/master/screenshots/preview-news.png)
 ### News card - swipe like
 ![preview-swipe_like](https://github.com/publicclassoverflow/TinNews/blob/tweaks/screenshots/preview-swipe_like.png)
 ### News card - swipe like
