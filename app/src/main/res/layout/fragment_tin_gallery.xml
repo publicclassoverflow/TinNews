@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_weight="1"
     android:background="@color/white"
-    android:layout_weight="1">
+    android:orientation="vertical">
 
     <com.mindorks.placeholderview.SwipePlaceHolderView
         android:id="@+id/swipeView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,19 +18,21 @@
         android:layout_gravity="bottom"
         android:gravity="center"
         android:orientation="horizontal">
+
         <ImageButton
             android:id="@+id/rejectBtn"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/ic_cancel"
-            android:tint="@color/gray"/>
+            android:tint="@color/gray" />
+
         <ImageButton
             android:id="@+id/acceptBtn"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
-            android:background="@drawable/ic_heart"/>
+            android:background="@drawable/ic_heart" />
     </LinearLayout>
 
 </LinearLayout>

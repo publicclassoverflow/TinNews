@@ -37,4 +37,5 @@
     <!-- Bottom dialog -->
     <string name="bottom_header">Are you sure you want to delete this news?</string>
     <string name="confirm_deletion">Confirm and delete the news</string>
+    <string name="no_saved_news">No Saved News</string>
 </resources>
