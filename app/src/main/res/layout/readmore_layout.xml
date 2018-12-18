@@ -2,17 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/four_dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/four_dp">
 
     <TextView
+        android:id="@+id/readmore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="@color/light_blue"
-        android:id="@+id/readmore"
-        android:text="@string/read_more"
-        android:textStyle="normal"
         android:fontFamily="@font/ubuntu_medium"
-        android:gravity="center_horizontal"/>
+        android:gravity="center_horizontal"
+        android:text="@string/read_more"
+        android:textColor="@color/light_blue"
+        android:textSize="16sp"
+        android:textStyle="normal" />
 </LinearLayout>

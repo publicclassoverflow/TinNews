@@ -14,13 +14,9 @@ public interface ProfileContract {
         void onCacheCleared();
 
         android.view.View.OnClickListener getCacheClearListener();
-
-        android.view.View.OnClickListener getOnCountryChangeListener(String country);
     }
 
     interface Model extends MvpContract.Model<Presenter> {
         void deleteAllNewsCache();
-
-        void setDefaultCountry(String country);
     }
 }
